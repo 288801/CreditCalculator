@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Calculator</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <script>
+        function txt(){
+            r = document.getElementById("r").value;
+            d = document.getElementById("d");
+            d.textContent = r
+        }
+        function sizePic() {
+            size = document.getElementById("size").value;
+            d = document.getElementById("d");
+            d.textContent = size;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Кредитный калькулятор</h1>
+
+    <form method="post">
+        <label>Сумма:</label>
+        <input type="range" name="sum" min="100000" max="10000000" value="5000000" oninput="txt()" class="slider" id="r" />
+        <label>Процентная ставка:</label>
+        <input type="range" name="pr" min="1" max="100" value="50" class="slider" />
+        <label>Срок кредита:</label>
+        <input type="range" name="term" min="1" max="360" value="180" class="slider" />
+        <input type="submit" name="cmd" value="Отправить" />
+    </form>
+
+    <h2 id="d">50</h2>
+
+    {% macro table_params(d, value='') -%}
+    <h2>{{ value }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Параметр</th>
+                <th>Значение</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for k, v in d.items() %}
+            <tr>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {%- endmacro %}
+    {{ table_params(params_get, 'Параметры GET') }}
+    {{ table_params(params_post, 'Параметры POST') }}
+
+</body>
+</html>
