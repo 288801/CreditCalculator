@@ -1,8 +1,13 @@
-var document = "index.html"
-var slider = document.getElementById("r");
-var output = document.getElementById("d");
-output.innerHTML = slider.value;
+function updateVal(){
+    sum = document.getElementById("sum").value;
+    pr = document.getElementById("pr").value;
+    term = document.getElementById("term").value;
 
-slider.oninput = function() {
-    output.innerHTML = this.value;
+    sumVal = document.getElementById("sumVal");
+    prVal = document.getElementById("prVal");
+    termVal = document.getElementById("termVal");
+
+    sumVal.textContent = sum+"млн";
+    prVal.textContent = pr+"%";
+    termVal.textContent = term+"мес";
 }

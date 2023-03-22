@@ -4,34 +4,24 @@
     <meta charset="UTF-8">
     <title>Credit Calculator</title>
     <link rel="stylesheet" href="../static/style.css">
-    <script>
-        function txt(){
-            r = document.getElementById("r").value;
-            d = document.getElementById("d");
-            d.textContent = r
-        }
-        function sizePic() {
-            size = document.getElementById("size").value;
-            d = document.getElementById("d");
-            d.textContent = size;
-        }
-    </script>
+    <script src="/static/script.js"></script>
 </head>
 <body>
 
     <h1>Кредитный калькулятор</h1>
 
     <form method="post">
-        <label>Сумма:</label>
-        <input type="range" name="sum" min="100000" max="10000000" value="5000000" oninput="txt()" class="slider" id="r" />
-        <label>Процентная ставка:</label>
-        <input type="range" name="pr" min="1" max="100" value="50" class="slider" />
-        <label>Срок кредита:</label>
-        <input type="range" name="term" min="1" max="360" value="180" class="slider" />
-        <input type="submit" name="cmd" value="Отправить" />
+        <h2 class="labels">Сумма:</h2>
+        <input type="range" name="sum" min="0.1" max="10" value="5" step="0.1" oninput="updateVal()" class="slider" id="sum" />
+        <h2 class="values" id="sumVal">5млн</h2>
+        <h2 class="labels">Процентная ставка:</h2>
+        <input type="range" name="pr" min="1" max="100" value="50" oninput="updateVal()" class="slider" id="pr" />
+        <h2 class="values" id="prVal">50%</h2>
+        <h2 class="labels">Срок кредита(в мес.):</h2>
+        <input type="range" name="term" min="1" max="360" value="180" oninput="updateVal()" class="slider" id="term" />
+        <h2 class="values" id="termVal">180мес</h2>
+        <input type="submit" id="gradient-button" value="Рассчитать" />
     </form>
-
-    <h2 id="d">50</h2>
 
     {% macro table_params(d, value='') -%}
     <h2>{{ value }}</h2>
