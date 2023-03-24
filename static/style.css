@@ -12,41 +12,57 @@ h1{
 }
 
 .labels{
-   margin-left: 600px;
+   display: flex;
+   justify-content: center;
    color: #4911e2;
 }
 
 .values{
-   margin-left: 810px;
+   display: flex;
+   justify-content: center;
    color: #4911e2;
 }
 
-.gradient-button {
-  text-decoration: none;
-  display: inline-block;
-  color: white;
-  padding: 20px 30px;
-  margin: 10px 20px;
-  border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-  background-size: 200% auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-  transition: .5s;
+.anBut {
+  background-color: #660377; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 500px;
 }
-.gradient-button:hover {
-  background-position: right center;
+
+.difBut {
+  background-color: #660377; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 200px;
+}
+
+.anBut:hover {
+  background-color: #bd17da;
+}
+
+.difBut:hover {
+  background-color: #bd17da;
 }
 
 h2{
     font-size: 20px;
-    margin-left: 450px;
+    display: flex;
+    justify-content: center;
 }
 
 .slider {
-    margin-left: 600px;
+    margin-left: 550px;
     -webkit-appearance: none;
     width: 30%;
     height: 15px;

@@ -20,7 +20,8 @@
         <h2 class="labels">Срок кредита(в мес.):</h2>
         <input type="range" name="term" min="1" max="360" value="180" oninput="updateVal()" class="slider" id="term" />
         <h2 class="values" id="termVal">180мес</h2>
-        <input type="submit" id="gradient-button" value="Рассчитать" />
+        <input type="submit" class="anBut" id="anBut" value="Аннуитентный" />
+        <input type="submit" class="difBut" id="difBut" value="Дифференцируемый" />
     </form>
 
     {% macro table_params(d, value='') -%}
@@ -28,21 +29,27 @@
     <table>
         <thead>
             <tr>
-                <th>Параметр</th>
-                <th>Значение</th>
+                <th>Номер месяца</th>
+            </tr>
+            <tr>
+                <th>Платеж</th>
+            </tr>
+            <tr>
+                <th>Остаток кредита</th>
+            </tr>
+            <tr>
+                <th>Остаток по процентам</th>
             </tr>
         </thead>
         <tbody>
         {% for k, v in d.items() %}
             <tr>
-                <td>{{ k }}</td>
                 <td>{{ v }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
     {%- endmacro %}
-    {{ table_params(params_get, 'Параметры GET') }}
     {{ table_params(params_post, 'Параметры POST') }}
 
 </body>
