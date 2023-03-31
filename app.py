@@ -13,16 +13,32 @@ def index():
     for p in request.form:
         params_post[p] = request.form[p]
         if idx == 1:
-            sum = int(params_post[p])*1000000
+            sum = float(params_post[p])*1000000
         if idx == 2:
             proc = int(params_post[p])
         if idx == 3:
             term = int(params_post[p])
         idx += 1
 
-    
+    print(request.form)
 
-    return render_template('index.html', params_post=request.form)
+    return render_template('index.html', params_post=an(sum, proc, term))
+
+
+def an(s, p, t):
+    s1 = s
+    m = p/1200
+    k = round((m*(1+m)**t)/((1+m)**t-1),3)
+    result = {'№месяца': [], 'Платеж': [], 'Остаток кредита': []}
+    for i in range(t):
+        result['№месяца'].append(i+1)
+        result['Платеж'].append(k*s)
+        s1 -= k*s
+        result['Остаток кредита'].append(s1)
+    return result
+
+# def dif(s, p, t):
+#
 
 
 if __name__ == '__main__':
