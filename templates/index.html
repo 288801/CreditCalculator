@@ -12,18 +12,18 @@
 
     <form method="post">
         <h2 class="labels">Сумма:</h2>
-        <input type="range" name="sum" min="0.1" max="10" value="0.1" step="0.1" oninput="updateVal()" class="slider" id="sum" />
-        <h2 class="values" id="sumVal">0.1млн</h2>
+        <input type="range" name="sum" min="100000" max="10000000" value={{params.sum}} step="100000" oninput="updateVal()" class="slider" id="sum" />
+        <h2 class="values" id="sumVal">{{params.sum}}млн</h2>
         <h2 class="labels">Процентная ставка:</h2>
-        <input type="range" name="pr" min="1" max="100" value="20" oninput="updateVal()" class="slider" id="pr" />
-        <h2 class="values" id="prVal">20%</h2>
+        <input type="range" name="pr" min="1" max="100" value={{params.proc}} oninput="updateVal()" class="slider" id="pr" />
+        <h2 class="values" id="prVal">{{params.proc}}%</h2>
         <h2 class="labels">Срок кредита(в мес.):</h2>
-        <input type="range" name="term" min="1" max="60" value="30" oninput="updateVal()" class="slider" id="term" />
-        <h2 class="values" id="termVal">30мес</h2>
+        <input type="range" name="term" min="1" max="60" value={{params.term}} oninput="updateVal()" class="slider" id="term" />
+        <h2 class="values" id="termVal">{{params.term}} мес</h2>
 
-        <input class="type1" type="radio" id="choice1" name="type" value="an" checked="true" />
+        <input class="type1" type="radio" id="choice1" name="type" value="an" {% if params.an %}checked{% endif %} />
         <label class="typeTxt" for="choice1">Аннуитентный</label>
-        <input class="type2" type="radio" id="choice2" name="type" value="dif" />
+        <input class="type2" type="radio" id="choice2" name="type" value="dif" {% if params.dif %}checked{% endif %} />
         <label class="typeTxt" for="choice2">Дифференцированный</label>
 
         <input type="submit" class="but" id="but" value="Посчитать" />
@@ -49,6 +49,7 @@
             {% endfor %}
         </tbody>
     </table>
+    <h2>Переплата - {{d['Переплата']}}</h2>
     {%- endmacro %}
     {{ table_params(params_post, 'Результат') }}
 
